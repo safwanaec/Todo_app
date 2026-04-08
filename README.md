@@ -91,16 +91,38 @@ npm install
 | `jsdom` | dev | DOM environment for tests |
 | `@testing-library/react` | dev | UI component testing utilities |
 | `@testing-library/jest-dom` | dev | Custom DOM matchers |
+| `electron` | dev | Desktop application framework |
+| `electron-builder` | dev | Build & package Electron apps |
+| `concurrently` | dev | Run multiple scripts in parallel |
+| `wait-on` | dev | Wait for services to be ready |
 
 ---
 
 ## How to Run
 
+### Web App (Browser-based)
+
 ```bash
 # Start the development server (hot-reload)
 npm run dev
-# → Opens at http://localhost:5173/
+# → Opens at http://localhost:5173/ in your browser
+```
 
+### Electron Desktop App (Standalone Application)
+
+```bash
+# Start Vite dev server + Electron app together
+# (The Electron window will automatically open)
+npm run electron-dev
+```
+
+This launches:
+1. **Vite dev server** at `http://localhost:5173/` (behind the scenes)
+2. **Electron window** displaying the TaskFlow app (no browser UI visible)
+
+### Testing & Building
+
+```bash
 # Run all unit tests (one-time run)
 npm run test -- --run
 
@@ -110,9 +132,76 @@ npm run test
 # Run tests with coverage report
 npm run test -- --coverage
 
-# Build for production
+# Build React app for production
 npm run build
+
+# Build standalone Windows executable (.exe)
+# Creates installer + portable app in dist/ folder
+npm run electron-build
 ```
+
+---
+
+## Running the App
+
+TaskFlow can be run in three different ways depending on your needs:
+
+### Option 1: Web App (Default)
+Perfect for development, debugging, and traditional browser use:
+
+```bash
+npm run dev
+```
+
+**Access:** Open your browser and navigate to **`http://localhost:5173/`**
+
+**Advantages:**
+- ✅ Browser DevTools available (F12)
+- ✅ Familiar browser experience
+- ✅ Can access from other machines on your network
+- ✅ Hot-reload on code changes
+- ✅ Traditional address bar and browser controls
+
+---
+
+### Option 2: Electron Desktop App (Standalone)
+Perfect for a native desktop experience without visible browser chrome:
+
+```bash
+npm run electron-dev
+```
+
+**Access:** Opens **automatically** in an Electron window (no browser needed)
+
+**Advantages:**
+- ✅ Looks like a native desktop app (no browser address bar visible)
+- ✅ Runs as a standalone application without browser UI
+- ✅ Can be distributed as a Windows `.exe` file
+- ✅ All features work identically to web app
+- ✅ DevTools available via right-click → "Inspect Element"
+- ✅ Can be pinned to taskbar and started from Start Menu
+
+---
+
+### Option 3: Standalone Executable (Distribution)
+Build a distributable Windows application for others to use:
+
+```bash
+npm run electron-build
+```
+
+**Output files created in `dist/` folder:**
+
+| File | Purpose |
+|---|---|
+| **`TaskFlow Setup 1.0.0.exe`** | Installer — recommended for distribution to others |
+| **`TaskFlow 1.0.0.exe`** | Portable executable — can be run immediately without installation |
+
+**Usage:**
+- Users can download the `.exe` file
+- Double-click to run (no Node.js or npm required)
+- Install via the Setup installer, or run the portable .exe directly
+- All data persists in `localStorage` (local user directory)
 
 ---
 
