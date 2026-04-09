@@ -7,10 +7,10 @@ Here's a **simple, detailed SRS** tailored for a **React-based To-Do app on Wind
 
 ### 1. Introduction
 **1.1 Purpose**  
-A simple, local-first task management app for individual Windows users.
+A simple, local-first task management app for individual users, now available as a browser app and an Electron desktop app.
 
 **1.2 Scope**  
-React-based desktop app (runs in a browser or as Electron wrapper). Tasks persist locally using `localStorage`. No backend, no accounts.
+React-based app (runs in a browser or as an Electron wrapper). Tasks persist locally using `localStorage`. No backend, no accounts.
 
 ---
 
@@ -32,7 +32,7 @@ React-based desktop app (runs in a browser or as Electron wrapper). Tasks persis
 
 ---
 
-### 3. UI Requirements (React‑specific)
+### 3. UI Requirements (React and Electron‑specific)
 
 These are **testable** and exam‑friendly.
 
@@ -50,6 +50,9 @@ These are **testable** and exam‑friendly.
 | UI-10 | **Responsive feedback**: On add/update/delete, show a non‑intrusive toast message (“Task added”, etc.) for 2 seconds. |
 | UI-11 | **Validation feedback**: If title is empty or exceeds 50 chars, the form shows a red error message under the field and disables the submit button. |
 | UI-12 | **Dark / light mode toggle** (bonus, but exam‑simple): a sun/moon icon in header toggles CSS class. |
+| UI-13 | **Electron Wrapper**: The app shall run as a standalone desktop application using Electron, with a custom menu bar and window controls. |
+| UI-14 | **System Tray**: The Electron app shall minimize to the system tray with an icon and quick actions (e.g., Add Task, Open App). |
+| UI-15 | **Notifications**: The Electron app shall use native notifications for task reminders and updates. |
 
 ---
 
@@ -74,6 +77,8 @@ These are **testable** and exam‑friendly.
 | C-03 | **Environment**: Runs in a browser; optionally wrapped as an Electron desktop app, but not required for the lab. |
 | C-04 | **Single user** per device – no authentication, no multi‑user. |
 | C-05 | **Date format**: All dates stored as ISO string (YYYY-MM-DD). |
+| C-06 | **Electron Integration**: The app shall use Electron for desktop deployment, with no additional backend services. |
+| C-07 | **Cross-Platform**: The Electron app shall support Windows, macOS, and Linux environments. |
 
 ---
 

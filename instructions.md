@@ -11,14 +11,25 @@ This app is a **local-first task manager**. That means:
 * no server
 * no database
 * the app is simple, fast, and suitable for a lab exam
+* **Electron integration** for desktop deployment
 
-The best design for this SRS is:
+---
 
-* **View** → React components
-* **Controller / Logic** → custom hooks and event handlers
-* **Model** → task objects + storage service + business rules
+# 3) Electron-Specific Features
 
-This keeps the app easy to understand and easy to explain in viva.
+### 3.1 Electron Wrapper
+
+The app is packaged as an Electron desktop application. Key features include:
+
+* **Custom Menu Bar**: Includes options for File, Edit, View, and Help.
+* **System Tray Integration**: Minimizes to the system tray with quick actions.
+* **Native Notifications**: Sends reminders and updates using the OS notification system.
+
+### 3.2 Development Steps
+
+1. **Setup Electron**: Install Electron and configure `main.cjs` and `preload.cjs`.
+2. **Package the App**: Use `electron-builder` to create distributable binaries for Windows, macOS, and Linux.
+3. **Test Electron Features**: Verify system tray, notifications, and window controls on all supported platforms.
 
 ---
 
